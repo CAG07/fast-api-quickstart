@@ -1,16 +1,14 @@
 # Use an official Python runtime as a parent image
-FROM python:3.11-slim-bookworm
+FROM python:3.11-slim-bullseye
 
 # Set the working directory to /app
 WORKDIR /app
 
-# Copy the current directory contents into the container at /code
-WORKDIR /app
-
-COPY ./requirements.txt /app/requirements.txt
+# Copy the current directory contents into the container
+COPY ./requirements.txt app/requirements.txt
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r app/requirements.txt
 
 COPY . /app
 
